@@ -3,6 +3,8 @@ const baseURL = process.env.BASEURL as string;
 
 export class Default_claim_deposit_accounts_Tax {
     readonly page: Page
+    //Claim Page Elements
+
     //Tax Page Elements
     readonly TaxRoundingDownRadioButton: Locator
     readonly TaxRoundingUpRadioButton: Locator
@@ -12,7 +14,9 @@ export class Default_claim_deposit_accounts_Tax {
     readonly SaveBtn: Locator
 
     constructor(page: Page) {
-        this.page = page        
+        this.page = page
+        //Claim Page Elements
+
         //Tax Page Elements
         this.TaxRoundingDownRadioButton = this.page.getByRole('radio',{name: '切り捨て'})
         this.TaxRoundingUpRadioButton = this.page.getByRole('radio',{name: '切り上げ'})
@@ -21,6 +25,11 @@ export class Default_claim_deposit_accounts_Tax {
         this.TaxExcludeRadioButton = this.page.getByRole('radio', { name: '税抜' });
         this.SaveBtn = this.page.locator('button.el-button.btn-save');   
     }
+    async NavigateToOfficeDefaultAccountScreen() {
+        await this.page.goto(baseURL);
+        await this.page.getByRole('menuitem', { name: '設定' }).click();
+        await this.page.locator('li').filter({ hasText: '債権・入金の科目のデフォルト, 消費税' }).locator('div').click();
+    }    
     async NavigateToOfficeTaxSettingScreen() {
         await this.page.goto(baseURL);
         await this.page.getByRole('menuitem', { name: '設定' }).click();
