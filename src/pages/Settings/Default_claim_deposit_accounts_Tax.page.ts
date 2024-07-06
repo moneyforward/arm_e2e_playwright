@@ -16,6 +16,7 @@ export class Default_claim_deposit_accounts_Tax {
         this.SaveBtn = this.page.locator('button.el-button.btn-save');   
     }
     async NavigateToOfficeTaxSettingScreen() {
+        await this.page.goto(baseURL);
         await this.page.getByRole('menuitem', { name: '設定' }).click();
         await this.page.locator('li').filter({ hasText: '債権・入金の科目のデフォルト, 消費税' }).locator('div').click();
         await this.page.getByRole('link', { name: '消費税' }).click();
