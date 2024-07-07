@@ -4,7 +4,7 @@ const baseURL = process.env.BASEURL as string;
 export class Default_claim_deposit_accounts_Tax {
     readonly page: Page
     //Claim Page Elements
-
+    readonly DefaultAccount: Locator
     //Tax Page Elements
     readonly TaxRoundingDownRadioButton: Locator
     readonly TaxRoundingUpRadioButton: Locator
@@ -16,7 +16,7 @@ export class Default_claim_deposit_accounts_Tax {
     constructor(page: Page) {
         this.page = page
         //Claim Page Elements
-
+        this.DefaultAccount = this.page.locator('div.el-input__inner')
         //Tax Page Elements
         this.TaxRoundingDownRadioButton = this.page.getByRole('radio',{name: '切り捨て'})
         this.TaxRoundingUpRadioButton = this.page.getByRole('radio',{name: '切り上げ'})
