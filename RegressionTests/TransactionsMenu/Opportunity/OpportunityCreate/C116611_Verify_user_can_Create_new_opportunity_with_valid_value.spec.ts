@@ -21,9 +21,9 @@ test('C116611_Verify user can Create new opportunity with valid value', async ({
   await opportunityPage.Department.click();
   await page.getByText('MOBILE', { exact: true }).click()
   await opportunityPage.ClaimAccount.click();
-  await page.getByRole('button', { name: '現金', exact: true }).click()
+  await page.locator('li').filter({ hasText: 'HDFC001' }).nth(0).click();
   await opportunityPage.ClaimSubAccount.click();
-  await page.getByRole('button', { name: '小口現金', exact: true }).click()
+  await page.locator('li').filter({ hasText: 'HDFC001CHILD' }).nth(0).click();
   await opportunityPage.Item.click();
   await page.getByText('IPHONE11').click();
   await opportunityPage.Memo.fill('PlaywrightTest');

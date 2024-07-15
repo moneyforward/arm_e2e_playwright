@@ -1,12 +1,18 @@
 import { test, expect } from '@playwright/test';
 import { OpportunityPage } from '@pages/TransactionsMenu/Opportunity/OpportunityPages.page'
+import { Default_claim_deposit_accounts_Tax } from '@pages/Settings/Default_claim_deposit_accounts_Tax.page'
 const PlaceHolder = '選択してください'  //PlaceHolder for input when its empty
 
 test('C116609_Verify_initial_UI_of_opportunity_create_screen', async ({ page }) => {
   test.info().annotations.push({ type: "test_id", description: "C116609" });
   const testName = test.info().title;
   console.log(`${testName} - started`);
-  // console.log('C116609_Verify_initial_UI_of_opportunity_create_screen - Started');
+
+  //Set Tax-Exclude
+  const TaxSettingPage = new Default_claim_deposit_accounts_Tax(page);
+  await TaxSettingPage.NavigateToOfficeTaxSettingScreen();
+  await TaxSettingPage.SetTaxExclude();
+
   //Navigate to Opportunity  
   const opportunityPage = new OpportunityPage(page);
   await opportunityPage.NavigateToOpportunity();
