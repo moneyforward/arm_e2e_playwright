@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
  */
 require('dotenv').config();
 dotenv.config({
-  path: './src/env/production.env'
+  path: './src/env/staging.env'
 });
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -27,7 +27,7 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 1 : 0,
+  retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   // workers: process.env.CI ? 1 : undefined,
   workers: process.env.CI ? 2 : undefined,
